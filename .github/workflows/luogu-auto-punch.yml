@@ -10,7 +10,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Download script
-        run: Invoke-WebRequest https://raw.githubusercontent.com/xcx0902/python/main/luogu-auto-punch.py -OutFile script.py
+        run: Invoke-WebRequest https://raw.githubusercontent.com/ljy2009/python/main/luogu-auto-punch.py -OutFile script.py
       - name: Install dependencies
         run: pip install requests
       - name: Run script
