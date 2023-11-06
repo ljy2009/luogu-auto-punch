@@ -3,7 +3,7 @@ import json
 import sys
 
 def punch(cookie):
-    return requests.get('https://www.luogu.com.cn/index/ajax_punch', headers={
+    return eval(repr(requests.get('https://www.luogu.com.cn/index/ajax_punch', headers={
         "Host": "www.luogu.com.cn",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv: 73.0) Gecko/20100101 Firefox/73.0",
         "Accept": "*/*",
@@ -14,13 +14,13 @@ def punch(cookie):
         "Cache-Control": "no-cache",
         "TE": "Trailers",
         "Cookie": cookie
-    }).text
+    }).text).replace('\\\\', '\\'))
 
 if __name__ == "__main__":
     print(f"Script Name: {sys.argv[0]}")
     for i in range(1, len(sys.argv)):
         response = punch(sys.argv[i])
-        print(f"No. {i}: {response.encode('utf-8')}")
+        print(f"No. {i}: {response}")
         try:
             tmp = json.loads(response)
             if tmp['code'] == 200:
